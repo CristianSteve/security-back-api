@@ -1,10 +1,10 @@
-require("dotenv").config();
-
-const DEVELOPMENT = require("./development");
-const PRODUCTION = require("./production");
-const { NODE_ENV } = process.env;
-
-let enviromnet = (NODE_ENV === "production" ? PRODUCTION : DEVELOPMENT);
-
-module.exports = enviromnet;
-
+module.exports = {
+    PORT : process.env.PORT || 3306,
+    DB : {
+        username : process.env.USER || "root",
+        password : process.env.PASS || "toor",
+        database : process.env.DB || "iot",
+        host : process.env.HOST || "localhost",
+        dialect : process.env.DIALECT || "mysql"
+    }
+}

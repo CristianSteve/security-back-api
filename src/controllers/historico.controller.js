@@ -1,20 +1,21 @@
 const mapper = require("automapper-js");
-const { StockDto, ProductoDto } = require("../dtos");
+const { HistoryDto } = require("../dtos");
 
 class HistoryController {
-  constructor({ StockService, ProductoService }) {
-    this._stockService = StockService;
-    this._productoService = ProductoService;
+  constructor({ HistoryService }) {
+    this._historyService = HistoryService;
   }
 
 
 
   async getHistory(req, res){
-
+    console.log("entro")
+    return res.json({message : "ok"})
   }
 
   async createHistory(req, res){
-    
+    console.log("entro")
+    return res.json({message : "post"})
   }
 /* 
   //Obtiene todos los productos en el Stock

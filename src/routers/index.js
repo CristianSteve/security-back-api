@@ -4,7 +4,7 @@ const cors = require("cors");
 const compression = require("compression");
 const app = express();
 
-module.exports = function({ ServicesRouter, UserRoutes, PermisoRoutes, CategoriaRoutes, ProveedorRoutes, ProductoRoutes, StockRoutes }){
+module.exports = function({ HistoryRoutes }){
     const router = Router();
     const apiRoute = Router();
 
@@ -13,7 +13,7 @@ module.exports = function({ ServicesRouter, UserRoutes, PermisoRoutes, Categoria
         .use(app.use(express.json()))
         .use(compression());
 
-    apiRoute.use("/history", ServicesRouter);
+    apiRoute.use("/history", HistoryRoutes);
     router.use("/api", apiRoute);
 
     return router;

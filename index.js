@@ -6,7 +6,7 @@ const aplication = container.resolve("app");
 aplication
 	.start()
 	.then(async () => {
-		await db.sequelize.sync();
+	//	await db.sequelize.sync();
 	})
 	.catch((e) => {
 	console.log("Error subiendo servidor", e);
