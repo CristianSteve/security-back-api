@@ -4,7 +4,7 @@ const cors = require("cors");
 const compression = require("compression");
 const app = express();
 
-module.exports = function({ HistoryRoutes }){
+module.exports = function({ HistoryRoutes, ComponentRoutes }){
     const router = Router();
     const apiRoute = Router();
 
@@ -14,6 +14,7 @@ module.exports = function({ HistoryRoutes }){
         .use(compression());
 
     apiRoute.use("/history", HistoryRoutes);
+    apiRoute.use("/component", ComponentRoutes);
     router.use("/api", apiRoute);
 
     return router;

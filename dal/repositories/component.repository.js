@@ -2,14 +2,14 @@ const BaseRepository = require("./base.repository");
 const {Op} = require('sequelize');
 
 
-class HistoryRepository extends BaseRepository {
+class ComponentRepository extends BaseRepository {
   constructor({ db }) {
-    super(db, "Stock");
+    super(db, "Component");
     this._db = db;
   }
 
   getCategoria(Categoria_idCategoria_stock) {
-/*     return this._db["Stock"].findAll({
+/*     return this._db["Component"].findAll({
       where: { Categoria_idCategoria_stock },
     }); */
   }
@@ -25,8 +25,8 @@ class HistoryRepository extends BaseRepository {
           right: true,
         },
       ],
-    });*/
-  } 
+    }); */
+  }
 }
 
-module.exports = HistoryRepository;
+module.exports = ComponentRepository;

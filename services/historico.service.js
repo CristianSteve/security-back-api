@@ -5,15 +5,15 @@ class HistoryService extends BaseService {
     this._entityBusiness = HistoryBusiness;
   }
 
-/*   async getCategoria(id) {
-    const entity = await this._entityBusiness.getCategoria(id);
+  async getDate(id) {
+    const entity = await this._entityBusiness.getDate(id);
     return entity;
   }
 
   async getFindProductAll(word) {
     const entity = await this._entityBusiness.getProductStock(word);
     return entity;
-  } */
+  }
 }
 
 module.exports = HistoryService;

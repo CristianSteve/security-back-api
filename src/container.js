@@ -8,18 +8,19 @@ const config = require("../config/environments");
 //Routers
 const Routes = require("./routers");
 const HistoryRoutes = require("./routers/history.routes"); 
+const ComponentRoutes = require("./routers/Component.routes"); 
 
 //controllers
-const { HistoryController  } = require("./controllers");
+const { HistoryController, ComponentController  } = require("./controllers");
 
 //services
-const { HistoryService } = require("../services");
+const { HistoryService, ComponentService } = require("../services");
 
 //business
-const { HistoryBusiness } = require("../domain/")
+const { HistoryBusiness, ComponentBusiness } = require("../domain/")
 
 //repositories
-const { HistoryRepository } = require("../dal/repositories");
+const { HistoryRepository, ComponentRepository } = require("../dal/repositories");
 
 //db
 const db = require("../dal/models");
@@ -31,8 +32,12 @@ container.
         app: asClass(Startup).singleton(),
         router : asFunction(Routes).singleton(),
         server: asClass(Server).singleton(),
+    })
+    .register({
         HistoryRoutes : asFunction(HistoryRoutes).singleton(),
-        HistoryController : asClass(HistoryController).singleton()
+        HistoryController : asClass(HistoryController).singleton(),
+        ComponentRoutes : asFunction(ComponentRoutes).singleton(),
+        ComponentController : asClass(ComponentController).singleton()
     })
     .register({
         config : asValue(config),
@@ -42,12 +47,15 @@ container.
     })
     .register({
         HistoryService: asClass(HistoryService).singleton(),
+        ComponentService: asClass(ComponentService).singleton(),
       })
       .register({
         HistoryRepository: asClass(HistoryRepository).singleton(),
+        ComponentRepository: asClass(ComponentRepository).singleton(),
       })
       .register({
         HistoryBusiness: asClass(HistoryBusiness).singleton(),
+        ComponentBusiness: asClass(ComponentBusiness).singleton(),
       });
 
 module.exports = container;

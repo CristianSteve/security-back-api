@@ -6,15 +6,16 @@ class HistoryController {
     this._historyService = HistoryService;
   }
 
-
-
   async getHistory(req, res){
-    console.log("entro")
-    return res.json({message : "ok"})
+    const { date } = req.query;
+    let history = await this._historyService.getDate();
+    //history = await this.mapperHistory(history);
+    return res.json({data : {date, history}})
   }
 
   async createHistory(req, res){
     console.log("entro")
+    
     return res.json({message : "post"})
   }
 /* 

@@ -1,11 +1,11 @@
 const BaseBusiness = require("./base.business");
 const mapper = require("automapper-js");
-const { History } = require("./models");
+const { Component } = require("./models");
 
-class HistoryBusiness extends BaseBusiness {
-  constructor({ HistoryRepository }) {
-    super(HistoryRepository, History);
-    this._entityRepository = HistoryRepository;
+class ComponentBusiness extends BaseBusiness {
+  constructor({ ComponentRepository }) {
+    super(ComponentRepository, Component);
+    this._entityRepository = ComponentRepository;
   }
 
   async getDate(id) {
@@ -28,4 +28,4 @@ class HistoryBusiness extends BaseBusiness {
   }
 }
 
-module.exports = HistoryBusiness;
+module.exports = ComponentBusiness;

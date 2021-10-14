@@ -1,4 +1,4 @@
-class Historico{
+class History{
   id=0;
   status = false;
   cantidad= 0;
@@ -10,4 +10,4 @@ class Historico{
   updatedAt = null;
 }
 
-module.exports = Historico;
+module.exports = History;
