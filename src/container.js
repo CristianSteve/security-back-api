@@ -3,6 +3,7 @@ const { asClass, createContainer, asFunction, asValue } = require("awilix");
 //App start
 const Startup = require("./startUp");
 const Server = require("./server");
+const SocketUp = require("./Socket");
 const config = require("../config/environments");
 
 //Routers
@@ -32,6 +33,7 @@ container.
         app: asClass(Startup).singleton(),
         router : asFunction(Routes).singleton(),
         server: asClass(Server).singleton(),
+        socketIo: asClass(SocketUp).singleton(),
     })
     .register({
         HistoryRoutes : asFunction(HistoryRoutes).singleton(),

@@ -8,6 +8,8 @@ class HistoryController {
 
   async getHistory(req, res){
     const { date } = req.query;
+    console.log("entro")
+    console.log(res.connection.remoteAddress);
     let history = await this._historyService.getDate();
     //history = await this.mapperHistory(history);
     return res.json({data : {date, history}})

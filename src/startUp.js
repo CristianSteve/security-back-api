@@ -4,7 +4,7 @@ class StartUp {
     }
 
     async start(){
-        await this._server.start();
+        return await this._server.start();
     }
 }
 

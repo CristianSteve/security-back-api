@@ -10,7 +10,7 @@ class ComponentController {
     let components = await this._componentService.getAll();
     return res.json({data : components})
   }
-
+  
   async getComponents(req, res){
     const { component } = req.params;
     let itemComponent = await this._componentService.get(component);

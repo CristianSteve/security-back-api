@@ -1,6 +1,9 @@
 const express = require("express");
 
 class Server {
+
+    _http = "initialize";
+
     constructor({config, router}){
         this._config = config;
         this._express = express();
@@ -9,12 +12,12 @@ class Server {
 
     start(){
         return new Promise((resolve, rejected) => {
-            const http = this._express.listen(this._config.PORT, ()=>{
-                const { port } = http.address();
+            this._http = this._express.listen(this._config.PORT, ()=>{
+                const { port } = this._http.address();
                 console.log("running on port", port);
-                resolve();
+                resolve(this._http);
             })
-        })
+        }) 
     }
 }
 
