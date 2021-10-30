@@ -10,17 +10,28 @@ class SocketUp {
     async start(http){
         this.create(http);
         this._io.on("connection", (socket) => {
-			socket.on('conectado', () =>{
-				console.log("ok");
+            console.log("Se conecto nuevo dispositivo: ", socket.id);
+            socket.on('nuevo', (data) =>{
+                console.log("Llego peticion a {nuevo}: ", data, socket.id);
+                socket.broadcast.emit('nuevo', {
+                    data, from: socket.id
+                });
 			})
 		});
+        this._io.on("disconnect", () => {
+            console.log(socket.connected);
+          });
     }
 
     async create(http){
-        this._io = new this._socketIo(http,  {cors: {
-			origin: "http://localhost:3000",
-			methods: ["GET", "POST"]
-		}});
+        this._io = new this._socketIo(http,  
+            {cors: {
+                allowUpgrades: true,
+                origins: '*:*'
+		    },
+            allowEIO3 : true,
+            transports: [ 'polling', 'websocket' ],
+        });
     }
 }
 
