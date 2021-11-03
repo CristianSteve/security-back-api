@@ -4,7 +4,7 @@ const {Op} = require('sequelize');
 
 class HistoryRepository extends BaseRepository {
   constructor({ db }) {
-    super(db, "Stock");
+    super(db, "Historico");
     this._db = db;
   }
 

@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
     status: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      unique: "status_UNIQUE"
     },
   }, {
     sequelize,

@@ -20,12 +20,15 @@ module.exports = (sequelize, DataTypes) => {
     descripcion: {
       type: DataTypes.STRING(60),
       allowNull: false,
-      unique: "descripcion_UNIQUE"
+    },
+    direccion: {
+      type: DataTypes.STRING(60),
+      allowNull: false,
+      unique: "direccion_UNIQUE"
     },
     status: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      unique: "nombre_UNIQUE"
     },
   }, {
     sequelize,

@@ -21,7 +21,7 @@ class SocketUp {
             console.log("Se conecto nuevo dispositivo: ", socket.id);
             socket.on('nuevo', (data) =>{
                 console.log("Llego peticion a {nuevo}: ", data, socket.id);
-                this.sendEmail();
+                //this.sendEmail();
                 socket.broadcast.emit('nuevo', {
                     data, from: socket.id
                 });

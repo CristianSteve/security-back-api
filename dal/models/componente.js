@@ -24,12 +24,10 @@ module.exports = (sequelize, DataTypes) => {
     descripcion: {
       type: DataTypes.STRING(60),
       allowNull: false,
-      unique: "descripcion_UNIQUE"
     },
     status: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      unique: "status_UNIQUE"
     },
   }, {
     sequelize,

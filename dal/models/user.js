@@ -22,12 +22,25 @@ module.exports = (sequelize, DataTypes) => {
     password: {
       type: DataTypes.STRING(18),
       allowNull: false,
-      unique: "nombre_UNIQUE"
     },
     nombre: {
       type: DataTypes.STRING(60),
       allowNull: false,
       unique: "nombre_UNIQUE"
+    },
+    direccion: {
+      type: DataTypes.STRING(60),
+      allowNull: false,
+      unique: "direccion_UNIQUE"
+    },
+    celular: {
+      type: DataTypes.STRING(30),
+      allowNull: false,
+      unique: "celular_UNIQUE"
+    },
+    emogi: {
+      type: DataTypes.STRING(2),
+      allowNull: false,
     },
     status: DataTypes.BOOLEAN
   }, {

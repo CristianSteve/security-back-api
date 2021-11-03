@@ -4,14 +4,13 @@ const { HistoryDto } = require("../dtos");
 class HistoryController {
   constructor({ HistoryService }) {
     this._historyService = HistoryService;
+    this._mapper = mapper;
   }
 
   async getHistory(req, res){
     const { date } = req.query;
-    console.log("entro")
-    console.log(res.connection.remoteAddress);
-    let history = await this._historyService.getDate();
-    //history = await this.mapperHistory(history);
+    let history = await this._historyService.getAll();
+    history = await this._mapper(HistoryDto, history);
     return res.json({data : {date, history}})
   }
 

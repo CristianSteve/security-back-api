@@ -13,18 +13,15 @@ module.exports = (sequelize, DataTypes) => {
   Historico.init({
     descripcion: {
       type: DataTypes.STRING(60),
-      allowNull: false,
-      unique: "descripcion_UNIQUE"
+      allowNull: false
     },
     usuario: {
         type: DataTypes.STRING(16),
-        allowNull: false,
-        unique: "usuario_UNIQUE"
+        allowNull: false
       },
     status: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
-      unique: "nombre_UNIQUE"
+      allowNull: false
     },
   }, {
     sequelize,
