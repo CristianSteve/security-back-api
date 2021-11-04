@@ -10,18 +10,22 @@ const config = require("../config/environments");
 const Routes = require("./routers");
 const HistoryRoutes = require("./routers/history.routes"); 
 const ComponentRoutes = require("./routers/Component.routes"); 
+const UserRoutes = require("./routers/user.routes"); 
+const ConfiguracionRoutes = require("./routers/configuracion.routes"); 
+const AreaRoutes = require("./routers/area.routes"); 
+const TipoComponenteRoutes = require("./routers/tipocomponente.routes"); 
 
 //controllers
-const { HistoryController, ComponentController  } = require("./controllers");
+const { HistoryController, ComponentController, UserController, ConfiguracionController, TipoComponenteController, AreaController  } = require("./controllers");
 
 //services
-const { HistoryService, ComponentService } = require("../services");
+const { HistoryService, ComponentService, UserService, ConfiguracionService, AreaService, TipoComponenteService } = require("../services");
 
 //business
-const { HistoryBusiness, ComponentBusiness } = require("../domain/")
+const { HistoryBusiness, ComponentBusiness, UserBusiness, ConfiguracionBusiness, AreaBusiness, TipoComponenteBusiness } = require("../domain/")
 
 //repositories
-const { HistoryRepository, ComponentRepository } = require("../dal/repositories");
+const { HistoryRepository, ComponentRepository, UserRepository, ConfiguracionRepository, AreaRepository, TipoComponenteRepository } = require("../dal/repositories");
 
 //db
 const db = require("../dal/models");
@@ -39,7 +43,15 @@ container.
         HistoryRoutes : asFunction(HistoryRoutes).singleton(),
         HistoryController : asClass(HistoryController).singleton(),
         ComponentRoutes : asFunction(ComponentRoutes).singleton(),
-        ComponentController : asClass(ComponentController).singleton()
+        ComponentController : asClass(ComponentController).singleton(),
+        UserRoutes : asFunction(UserRoutes).singleton(),
+        UserController : asClass(UserController).singleton(),
+        ConfiguracionRoutes : asFunction(ConfiguracionRoutes).singleton(),
+        ConfiguracionController : asClass(ConfiguracionController).singleton(),
+        AreaRoutes : asFunction(AreaRoutes).singleton(),
+        AreaController : asClass(AreaController).singleton(),
+        TipoComponenteRoutes : asFunction(TipoComponenteRoutes).singleton(),
+        TipoComponenteController : asClass(TipoComponenteController).singleton(),
     })
     .register({
         config : asValue(config),
@@ -50,14 +62,26 @@ container.
     .register({
         HistoryService: asClass(HistoryService).singleton(),
         ComponentService: asClass(ComponentService).singleton(),
+        UserService: asClass(UserService).singleton(),
+        ConfiguracionService: asClass(ConfiguracionService).singleton(),
+        AreaService: asClass(AreaService).singleton(),
+        TipoComponenteService: asClass(TipoComponenteService).singleton(),
       })
       .register({
         HistoryRepository: asClass(HistoryRepository).singleton(),
         ComponentRepository: asClass(ComponentRepository).singleton(),
+        UserRepository: asClass(UserRepository).singleton(),
+        ConfiguracionRepository: asClass(ConfiguracionRepository).singleton(),
+        AreaRepository: asClass(AreaRepository).singleton(),
+        TipoComponenteRepository: asClass(TipoComponenteRepository).singleton(),
       })
       .register({
         HistoryBusiness: asClass(HistoryBusiness).singleton(),
         ComponentBusiness: asClass(ComponentBusiness).singleton(),
+        UserBusiness: asClass(UserBusiness).singleton(),
+        ConfiguracionBusiness: asClass(ConfiguracionBusiness).singleton(),
+        AreaBusiness: asClass(AreaBusiness).singleton(),
+        TipoComponenteBusiness: asClass(TipoComponenteBusiness).singleton(),
       });
 
 module.exports = container;

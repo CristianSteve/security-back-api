@@ -4,7 +4,12 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      User.belongsTo(models.Configuracion, { as: "configuracion", foreignKey: "idConfiguracion"});
+      /* User.belongsTo(models.Configuracion, { as: "configuracion", foreignKey: "idConfiguracion"}); */
+      User.hasOne(models.Configuracion, {
+        foreignKey: "idUser",
+        as: "Configuracion",
+        onDelete: "CASCADE"
+      });
       User.belongsTo(models.Area, { as: "area", foreignKey: "Area_idArea"});
     }
   };

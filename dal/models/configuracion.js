@@ -4,10 +4,11 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Configuracion extends Model {
     static associate(models) {
-      Configuracion.hasOne(models.User, {
-        foreignKey: "idConfiguracion",
+      Configuracion.belongsTo(models.User, {
+        foreignKey: "idUser",
         as: "User",
-        onDelete: "CASCADE"
+        onDelete: "CASCADE",
+        unique: true
       });
     }
   }

@@ -4,9 +4,11 @@ class User{
     email = "";
     password = "";
     nombre = "";
+    direccion = "";
+    celular = "";
+    emogi = "";
     status = false;
     Area_idArea = 0;
-    idConfiguracion = 0;
   }
   
   module.exports = User;
