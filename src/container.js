@@ -4,6 +4,7 @@ const { asClass, createContainer, asFunction, asValue } = require("awilix");
 const Startup = require("./startUp");
 const Server = require("./server");
 const SocketUp = require("./Socket");
+const Auth = require("./../domain/auth.business");
 const config = require("../config/environments");
 
 //Routers
@@ -14,9 +15,10 @@ const UserRoutes = require("./routers/user.routes");
 const ConfiguracionRoutes = require("./routers/configuracion.routes"); 
 const AreaRoutes = require("./routers/area.routes"); 
 const TipoComponenteRoutes = require("./routers/tipocomponente.routes"); 
+const AuthAPIRoutes = require("./routers/authAPI.routes"); 
 
 //controllers
-const { HistoryController, ComponentController, UserController, ConfiguracionController, TipoComponenteController, AreaController  } = require("./controllers");
+const { HistoryController, ComponentController, UserController, ConfiguracionController, TipoComponenteController, AreaController, AuthController  } = require("./controllers");
 
 //services
 const { HistoryService, ComponentService, UserService, ConfiguracionService, AreaService, TipoComponenteService } = require("../services");
@@ -38,6 +40,7 @@ container.
         router : asFunction(Routes).singleton(),
         server: asClass(Server).singleton(),
         socketIo: asClass(SocketUp).singleton(),
+        Auth: asClass(Auth).singleton(),
     })
     .register({
         HistoryRoutes : asFunction(HistoryRoutes).singleton(),
@@ -52,6 +55,8 @@ container.
         AreaController : asClass(AreaController).singleton(),
         TipoComponenteRoutes : asFunction(TipoComponenteRoutes).singleton(),
         TipoComponenteController : asClass(TipoComponenteController).singleton(),
+        AuthAPIRoutes : asFunction(AuthAPIRoutes).singleton(),
+        AuthController : asClass(AuthController).singleton(),
     })
     .register({
         config : asValue(config),

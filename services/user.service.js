@@ -5,6 +5,10 @@ class UserService extends BaseService {
     this._entityBusiness = UserBusiness;
   }
 
+  async authUser(username, password) {
+    const entities = await this._entityBusiness.getToken(username, password);
+    return entities;
+  }
 }
 
 module.exports = UserService;

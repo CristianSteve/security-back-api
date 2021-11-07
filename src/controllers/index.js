@@ -5,4 +5,5 @@ module.exports = {
     ConfiguracionController : require("./configuracion.controller"),
     AreaController : require("./area.controller"),
     TipoComponenteController : require("./tipocomponente.controller"),
+    AuthController : require("./auth.controller"),
 }

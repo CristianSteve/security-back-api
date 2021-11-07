@@ -4,7 +4,7 @@ const {Op} = require('sequelize');
 
 class ComponentRepository extends BaseRepository {
   constructor({ db }) {
-    super(db, "Component");
+    super(db, "Componente");
     this._db = db;
   }
 

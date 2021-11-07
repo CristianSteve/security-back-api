@@ -1,5 +1,6 @@
 module.exports = {
     PORT : process.env.PORT || 3306,
+    TOKEN_SECRET : process.env.TOKEN_SECRET,
     DB : {
         username : process.env.USER || "root",
         password : process.env.PASS || "toor",

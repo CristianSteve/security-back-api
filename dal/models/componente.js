@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Componente.init({
+    //icon : DataTypes.STRING(20),
     nombre: {
       type: DataTypes.STRING(45),
       allowNull: false,

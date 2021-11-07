@@ -3,6 +3,8 @@ class History{
   Componente_idComponente = 0;
   usuario = "";
   descripcion = "";
+  createdAt = "";
+  updatedAt = "";
   status = false;
 }
 
