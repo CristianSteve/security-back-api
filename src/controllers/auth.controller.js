@@ -8,11 +8,11 @@ class AuthController {
 
   async authUser(req, res){
     const { username, password } = req.body;
-    let auth = await this._userService.authUser(username, password);
-    if(auth?.status === "409")
-      return res.status(auth.status).json({auth})
+    const data = await this._userService.authUser(username, password);
+    if(data?.status === "409")
+      return res.status(data.status).json({data})
     else
-      return res.json({data : {username, auth}})
+      return res.json({data :  data})
   }
 } 
 

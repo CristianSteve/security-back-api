@@ -7,7 +7,7 @@ class Auth {
 
   async createToken(username) {
       try{
-        return jwt.sign({ username }, this._config.TOKEN_SECRET,{expiresIn : 30});
+        return jwt.sign({ username }, this._config.TOKEN_SECRET,{expiresIn : 60 * 60});
       }catch(e){
         return {
             status: "409",
@@ -25,7 +25,8 @@ class Auth {
       if(!auth) res.json({error : "Code no valido"})
       next();
     } catch (e) {
-      res.json(
+      console.log(e)
+      res.status(409).json(
        {
         status: "409",
         codeError: "ATH050",

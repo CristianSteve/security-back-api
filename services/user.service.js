@@ -6,8 +6,7 @@ class UserService extends BaseService {
   }
 
   async authUser(username, password) {
-    const entities = await this._entityBusiness.getToken(username, password);
-    return entities;
+    return await this._entityBusiness.getToken(username, password);
   }
 }
 
