@@ -5,8 +5,8 @@ class HistoryService extends BaseService {
     this._entityBusiness = HistoryBusiness;
   }
 
-  async getDate(id) {
-    const entity = await this._entityBusiness.getDate(id);
+  async getDate(id, component) {
+    const entity = await this._entityBusiness.getDate(id, component);
     return entity;
   }
 

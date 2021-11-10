@@ -42,10 +42,14 @@ class ConfiguracionController {
   async getUpConf(req, res){
     const { id } = req.params;
     const entity = req.body;
-    let confUser = await this._mapper(ConfiguracionDto, entity);
-    confUser = await this._configuracionService.update(id, confUser);
-    console.log(confUser);
-    res.json({messahe : "pruebas"});
+    try{
+      let confUser = await this._mapper(ConfiguracionDto, entity);
+      confUser = await this._configuracionService.update(id, confUser);
+      console.log(confUser);
+      res.json({data : confUser});
+    }catch(error){
+      res.status(500).json({status : "409", codeError : "CONF090", description: "Se ha generado un error interno"})
+    }
   }
 } 
 

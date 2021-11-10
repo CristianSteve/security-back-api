@@ -7,11 +7,17 @@ class HistoryController {
     this._mapper = mapper;
   }
 
-  async getHistory(req, res){
-    const { date } = req.query;
-    let history = await this._historyService.getAll();
+  async getDate(req, res){
+    const { date, type } = req.query;
+    let history = await this._historyService.getDate(date, type);
     history = await this._mapper(HistoryDto, history);
     return res.json({data : {date, history}})
+  }
+
+  async getHistory(req, res){
+    let history = await this._historyService.getAll();
+    history = await this._mapper(HistoryDto, history);
+    return res.json({data : history})
   }
 
   async createHistory(req, res){

@@ -25,12 +25,12 @@ class Auth {
       if(!auth) res.json({error : "Code no valido"})
       next();
     } catch (e) {
-      console.log(e)
       res.status(409).json(
        {
         status: "409",
         codeError: "ATH050",
         description: "Acceso denegado, token no valido para el usuario",
+        expired : e.expiredAt
       });
     }
   }

@@ -27,6 +27,8 @@ class BaseBusiness {
     entity.id = id;
     entity = mapper(this.entityToMap, entity);
     const updatedEntity = await this._entityRepository.update(id, entity);
+    if(updatedEntity)
+      return this.get(id)
     return mapper(this.entityToMap, updatedEntity);
   }
 
