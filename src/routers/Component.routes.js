@@ -6,7 +6,7 @@ module.exports = function({ ComponentController }){
     router.get("/:component", ComponentController.getComponents.bind(ComponentController));
     router.get("/", ComponentController.getAllComponents.bind(ComponentController));
     router.post("/", ComponentController.createComponent.bind(ComponentController));
-    router.patch("/:component", ComponentController.modifyComponent.bind(ComponentController));
+    router.patch("/:id", ComponentController.modifyComponent.bind(ComponentController));
     
     return router;
 }

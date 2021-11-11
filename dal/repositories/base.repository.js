@@ -19,6 +19,7 @@ class BaseRepository {
     update(id, entity) {
       delete entity.createdAt;
       delete entity.updatedAt;
+      delete entity.id;
       return this._db[this.entity].update(entity, { where: { id } });
     }
   

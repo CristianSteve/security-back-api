@@ -8,6 +8,12 @@ class ComponentRepository extends BaseRepository {
     this._db = db;
   }
 
+  updateStatus(id, entity) {
+    delete entity.createdAt;
+    delete entity.updatedAt;
+    return this._db.Componente.update(entity, { where: { id } }); 
+  }
+
   getCategoria(Categoria_idCategoria_stock) {
 /*     return this._db["Component"].findAll({
       where: { Categoria_idCategoria_stock },

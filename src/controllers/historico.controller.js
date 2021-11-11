@@ -21,14 +21,11 @@ class HistoryController {
   }
 
   async createHistory(req, res){
-    console.log("entro")
-    
     return res.json({message : "post"})
   }
 /* 
   //Obtiene todos los productos en el Stock
   async getStock(req, res) {
-    console.log("------------->1")
     let stock = await this._stockService.getAll();
     stock = await this.mapperStock(stock);
 
@@ -39,7 +36,6 @@ class HistoryController {
 
   //Obtiene el stock segun su id
   async getStockId(req, res) {
-    console.log("------------->2")
 
     const { id } = req.params;
     let stock = await this._stockService.get(id);
@@ -52,7 +48,6 @@ class HistoryController {
 
   //Obtiene los productos del stock segun la categoria
   async getStockCategoria(req, res) {
-    console.log("------------->3")
 
     const { id } = req.params;
     let stock = await this._stockService.getCategoria(id);
@@ -65,7 +60,6 @@ class HistoryController {
   
   //Busca un producto determinado por el nombre y que exista en un stock
   async getFindProduct(req, res) {
-    console.log("-------------|>4");
     const { name } = req.query;
     let stock = await this._stockService.getFindProductAll(name);
     stock = await this.mapperStock(stock);
@@ -77,7 +71,6 @@ class HistoryController {
 
   //Crea un nuevo stock segun un producto
   async createStock(req, res) {
-    console.log("------------->5")
 
     const { body } = req;
     const createdStock = await this._stockService.create(body);

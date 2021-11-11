@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "CASCADE"
       });
       User.belongsTo(models.Area, { as: "area", foreignKey: "Area_idArea"});
+      User.belongsTo(models.Profile, { as: "profile", foreignKey: "idProfile"});
     }
   };
   User.init({

@@ -4,23 +4,26 @@ const { ComponentDto } = require("../dtos");
 class ComponentController {
   constructor({ ComponentService }) {
     this._componentService = ComponentService;
+    this._mapper = mapper;
   }
 
-  async getAllComponents(req, res){
-    let components = await this._componentService.getAll();
-    return res.json({data : components})
-  }
-  
   async getComponents(req, res){
     const { component } = req.params;
     let itemComponent = await this._componentService.get(component);
     return res.json({data : itemComponent})
   }
 
+  async getAllComponents(req, res){
+    let components = await this._componentService.getAll();
+    return res.json({data : components})
+  }
+
   async createComponent(req, res){
     const { body } = req;
     try {
-      let newComponent = await this._componentService.create(body);
+      let newComponent = await this._mapper(ComponentDto, body);
+      console.log(newComponent)
+      newComponent = await this._componentService.create(newComponent);
       return res.json({data : newComponent})
     }catch(e){
       return res.json({error : "error", message : e.message})
@@ -28,13 +31,13 @@ class ComponentController {
   }
 
   async modifyComponent(req, res){
-    const { body } = req;
-    try {
-      let updateComponent = await this._componentService.update(body);
-      return res.json({data : updateComponent})
-    }catch(e){
-      return res.json({error : "error", message : e.message})
-    }
+    const entity = req.body;
+    const { id } = req.params
+    console.table(entity)
+    console.log(id)
+    let upComponent = await this._mapper(ComponentDto, entity);
+    upComponent = await this._componentService.update(id, upComponent);
+    return res.json({data : "actualizado"})
   }
 } 
 

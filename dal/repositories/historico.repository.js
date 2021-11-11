@@ -9,12 +9,10 @@ class HistoryRepository extends BaseRepository {
   }
 
   getDateHistory(id) {
-    console.log(id)
     return this._db.Historico.findAll({where : {createdAt : {[Op.startsWith] : id}}})
   }
   
   getDateTypeHistory(id, Componente_idComponente) {
-    console.log(id, Componente_idComponente)
     return this._db.Historico.findAll({where : { [Op.and] : [{createdAt : {[Op.startsWith] : id}}, {Componente_idComponente}]}})
   } 
 
