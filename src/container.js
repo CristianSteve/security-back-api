@@ -6,6 +6,7 @@ const Server = require("./server");
 const SocketUp = require("./Socket");
 const Auth = require("./../domain/auth.business");
 const config = require("../config/environments");
+const Email = require("./notification/email");
 
 //Routers
 const Routes = require("./routers");
@@ -27,7 +28,7 @@ const { HistoryService, ComponentService, UserService, ConfiguracionService, Are
 const { HistoryBusiness, ComponentBusiness, UserBusiness, ConfiguracionBusiness, AreaBusiness, TipoComponenteBusiness } = require("../domain/")
 
 //repositories
-const { HistoryRepository, ComponentRepository, UserRepository, ConfiguracionRepository, AreaRepository, TipoComponenteRepository } = require("../dal/repositories");
+const { HistoryRepository, ComponentRepository, UserRepository, ConfiguracionRepository, AreaRepository, TipoComponenteRepository, CodeUserRepository } = require("../dal/repositories");
 
 //db
 const db = require("../dal/models");
@@ -41,6 +42,7 @@ container.
         server: asClass(Server).singleton(),
         socketIo: asClass(SocketUp).singleton(),
         Auth: asClass(Auth).singleton(),
+        Email: asClass(Email).singleton(),
     })
     .register({
         HistoryRoutes : asFunction(HistoryRoutes).singleton(),
@@ -79,6 +81,7 @@ container.
         ConfiguracionRepository: asClass(ConfiguracionRepository).singleton(),
         AreaRepository: asClass(AreaRepository).singleton(),
         TipoComponenteRepository: asClass(TipoComponenteRepository).singleton(),
+        CodeUserRepository: asClass(CodeUserRepository).singleton(),
       })
       .register({
         HistoryBusiness: asClass(HistoryBusiness).singleton(),

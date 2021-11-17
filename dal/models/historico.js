@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     usuario: {
-        type: DataTypes.STRING(16),
+        type: DataTypes.STRING(60),
         allowNull: false
       },
     status: {

@@ -10,6 +10,11 @@ module.exports = (sequelize, DataTypes) => {
         as: "Configuracion",
         onDelete: "CASCADE"
       });
+      User.hasMany(models.CodeUser,{
+        foreignKey: "idUserFrom",
+        as : "CodeUser"
+      }) 
+      
       User.belongsTo(models.Area, { as: "area", foreignKey: "Area_idArea"});
       User.belongsTo(models.Profile, { as: "profile", foreignKey: "idProfile"});
     }

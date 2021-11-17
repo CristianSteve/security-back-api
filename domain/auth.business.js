@@ -5,9 +5,9 @@ class Auth {
     this._config = config;
   }
 
-  async createToken(username) {
+  async createToken(username, email, nombre) {
       try{
-        return jwt.sign({ username }, this._config.TOKEN_SECRET,{expiresIn : 60 * 60});
+        return jwt.sign({ username, email, nombre }, this._config.TOKEN_SECRET,{expiresIn : 60 * 60});
       }catch(e){
         return {
             status: "409",
@@ -22,7 +22,8 @@ class Auth {
     const token = req.header('tsec')
     try {
       const auth = jwt.verify(token, process.env.TOKEN_SECRET);
-      if(!auth) res.json({error : "Code no valido"})
+      if(!auth) res.json({error : "Code no valido"});
+      res.user = auth;
       next();
     } catch (e) {
       res.status(409).json(

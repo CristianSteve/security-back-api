@@ -2,8 +2,9 @@ const mapper = require("automapper-js");
 const { ConfiguracionDto } = require("../dtos");
 
 class ConfiguracionController {
-  constructor({ ConfiguracionService }) {
+  constructor({ ConfiguracionService, Email }) {
     this._configuracionService = ConfiguracionService;
+    this._email = Email;
     this._mapper = mapper;
   }
 
@@ -45,6 +46,10 @@ class ConfiguracionController {
     try{
       let confUser = await this._mapper(ConfiguracionDto, entity);
       confUser = await this._configuracionService.update(id, confUser);
+      console.table(res.user)
+      const conf = {email : res.user.email, nombre : res.user.nombre, subject : "Configuracion"}
+      await this._email.sendEmail(conf);
+
       res.json({data : confUser});
     }catch(error){
       res.status(500).json({status : "409", codeError : "CONF090", description: "Se ha generado un error interno"})

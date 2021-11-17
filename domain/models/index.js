@@ -6,4 +6,5 @@ module.exports = {
     Configuracion : require("./configuracion"),
     TipoComponente : require("./tipoComponente"),
     Area : require("./area"),
+    CodeUser :  require("./codeUser"),
 }

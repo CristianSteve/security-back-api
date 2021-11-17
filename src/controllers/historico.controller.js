@@ -2,9 +2,10 @@ const mapper = require("automapper-js");
 const { HistoryDto } = require("../dtos");
 
 class HistoryController {
-  constructor({ HistoryService }) {
+  constructor({ HistoryService, Email }) {
     this._historyService = HistoryService;
     this._mapper = mapper;
+    this._email = Email;
   }
 
   async getDate(req, res){
@@ -21,7 +22,15 @@ class HistoryController {
   }
 
   async createHistory(req, res){
-    return res.json({message : "post"})
+    const history = req.body;
+    if(!history?.usuario)
+      history.usuario = res.user.nombre;
+    let newHistory = await this._historyService.create(history);
+    newHistory = await this._mapper(HistoryDto, newHistory);
+    //Debera enviar correo a todos los usuarios del sistema
+    const conf = {email : res.user.email, nombre : res.user.nombre, area: "Area privada", subject : "Alerta", type : "alert"}
+    await this._email.sendEmail(conf);
+    return res.json({message : newHistory})
   }
 /* 
   //Obtiene todos los productos en el Stock

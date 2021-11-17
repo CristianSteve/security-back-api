@@ -5,4 +5,5 @@ module.exports = {
     ConfiguracionRepository : require("./configuracion.repository"),
     AreaRepository : require("./area.repository"),
     TipoComponenteRepository : require("./tipocomponente.repository"),
+    CodeUserRepository : require("./codeUser.repository"),
 }
