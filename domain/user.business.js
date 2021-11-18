@@ -21,7 +21,6 @@ class UserBusiness extends BaseBusiness {
 
   async getCode(entity){
     const codeUser = mapper(CodeUser, entity);
-    console.table(codeUser)
 
     const code =  await this._entityCodeRepository.create(codeUser);
     return mapper(CodeUser, code.toJSON());

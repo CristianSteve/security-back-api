@@ -18,7 +18,6 @@ class UserController {
     let newUser = req.body;
     newUser.Area_idArea = 1;
     const dtoUser = await this._mapper(UserDto, newUser);
-    console.table(dtoUser)
     let user = await this._userService.create(dtoUser);
     user = await this._mapper(UserDto, user);
     res.json({data : user})

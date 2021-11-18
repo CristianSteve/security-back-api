@@ -22,7 +22,6 @@ class ComponentController {
     const { body } = req;
     try {
       let newComponent = await this._mapper(ComponentDto, body);
-      console.log(newComponent)
       newComponent = await this._componentService.create(newComponent);
       return res.json({data : newComponent})
     }catch(e){
@@ -33,8 +32,6 @@ class ComponentController {
   async modifyComponent(req, res){
     const entity = req.body;
     const { id } = req.params
-    console.table(entity)
-    console.log(id)
     let upComponent = await this._mapper(ComponentDto, entity);
     upComponent = await this._componentService.update(id, upComponent);
     return res.json({data : "actualizado"})

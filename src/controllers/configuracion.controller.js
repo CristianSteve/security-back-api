@@ -46,8 +46,8 @@ class ConfiguracionController {
     try{
       let confUser = await this._mapper(ConfiguracionDto, entity);
       confUser = await this._configuracionService.update(id, confUser);
-      console.table(res.user)
-      const conf = {email : res.user.email, nombre : res.user.nombre, subject : "Configuracion"}
+      //
+      const conf = {email : res.user.email, nombre : res.user.nombre, subject : "Configuracion", type: "settings"}
       await this._email.sendEmail(conf);
 
       res.json({data : confUser});
