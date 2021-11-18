@@ -1,12 +1,12 @@
 const BaseBusiness = require("./base.business");
 const mapper = require("automapper-js");
-const { UserAuth, CodeUser } = require("./models");
+const { UserAuth, CodeUser, User } = require("./models");
 
 class UserBusiness extends BaseBusiness {
   constructor({ config, UserRepository, CodeUserRepository, Auth }) {
-    super(UserRepository, UserAuth);
+    super(UserRepository, User);
     this._entityRepository = UserRepository;
-    this.__entityCodeRepository = CodeUserRepository;
+    this._entityCodeRepository = CodeUserRepository;
     this._config = config;
     this._Auth = Auth;
   }
@@ -23,7 +23,7 @@ class UserBusiness extends BaseBusiness {
     const codeUser = mapper(CodeUser, entity);
     console.table(codeUser)
 
-    const code =  await this.__entityCodeRepository.create(codeUser);
+    const code =  await this._entityCodeRepository.create(codeUser);
     return mapper(CodeUser, code.toJSON());
   }
 }

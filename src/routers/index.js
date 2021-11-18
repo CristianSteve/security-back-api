@@ -15,7 +15,7 @@ module.exports = function({ HistoryRoutes, ComponentRoutes, UserRoutes, Configur
 
     apiRoute.use("/history", Auth.verifyToken, HistoryRoutes);
     apiRoute.use("/component", Auth.verifyToken, ComponentRoutes);
-    apiRoute.use("/user", Auth.verifyToken, UserRoutes);
+    apiRoute.use("/user", UserRoutes);
     apiRoute.use("/configuracion", Auth.verifyToken, ConfiguracionRoutes);
     apiRoute.use("/area", Auth.verifyToken, AreaRoutes);
     apiRoute.use("/tipoComponente", Auth.verifyToken, TipoComponenteRoutes);

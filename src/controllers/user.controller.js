@@ -14,8 +14,17 @@ class UserController {
     return res.json({data : user})
   }
 
+  async createUser(req, res){
+    let newUser = req.body;
+    newUser.Area_idArea = 1;
+    const dtoUser = await this._mapper(UserDto, newUser);
+    console.table(dtoUser)
+    let user = await this._userService.create(dtoUser);
+    user = await this._mapper(UserDto, user);
+    res.json({data : user})
+  }
+
   async codeUser(req, res){
-    console.log("user entro")
     let create = req.body;
     const emailEmisor = res.user.email;
     //code

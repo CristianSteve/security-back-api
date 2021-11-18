@@ -41,8 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     direccion: {
       type: DataTypes.STRING(60),
-      allowNull: false,
-      unique: "direccion_UNIQUE"
+      allowNull: false
     },
     celular: {
       type: DataTypes.STRING(30),
