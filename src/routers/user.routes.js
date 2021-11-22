@@ -5,7 +5,7 @@ module.exports = function({ UserController, Auth }){
 
     router.get("/", Auth.verifyToken, UserController.getAll.bind(UserController));
     router.post("/", UserController.createUser.bind(UserController));
-    router.post("/code", Auth.verifyToken, UserController.codeUser.bind(UserController));
+   /*  router.post("/code", Auth.verifyToken, UserController.codeUser.bind(UserController)); */
     
     return router;
 }

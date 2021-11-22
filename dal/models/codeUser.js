@@ -17,9 +17,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(60),
         allowNull: false,
       },
-      codido: {
+      codigo: {
         type: DataTypes.STRING(60),
         allowNull: false,
+      },
+      area: {
+        type: DataTypes.STRING(50),
+        allowNull: true,
       },
       status: {
         type: DataTypes.BOOLEAN,

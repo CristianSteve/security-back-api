@@ -7,6 +7,11 @@ class CodeUserRepository extends BaseRepository {
     super(db, "CodeUser");
     this._db = db;
   }
+
+  async getCode(codigo){
+    console.table(codigo)
+    return this._db.CodeUser.findOne({ where: { codigo }});
+  }
 }
 
 module.exports = CodeUserRepository;

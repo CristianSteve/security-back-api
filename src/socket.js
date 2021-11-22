@@ -1,9 +1,8 @@
 const { Server : asIoServer } = require("socket.io");
 
 class SocketUp {
-    constructor({server}){
+    constructor(){
         this._socketIo = asIoServer;
-        this._server = server._http; 
         this._io = {};
     }
 
@@ -20,7 +19,12 @@ class SocketUp {
 		});
         this._io.on("disconnect", () => {
             console.log(socket.connected);
-          });
+        });
+    }
+
+    async emit(nombre, valor){
+        console.log("Emitiendo......")
+        this._io.emit('nuevo', {servo : "server"});
     }
 
     async create(http){

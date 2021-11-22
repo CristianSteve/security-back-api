@@ -22,18 +22,15 @@ class ConfiguracionController {
     const { id } = req.params;
     let confUser = await this._configuracionService.getConfUser( id );
 
-    if(!confUser) 
-      return res.status(409).json({message : "Usuario no encontrado"});
+    const status = confUser?.status ? confUser.status : 200;
     
-    confUser = await this._mapper(ConfiguracionDto, confUser);
-    return res.json({data : confUser})
+    return res.status(status).json({data : confUser})
   }
 
   async getConf(req, res){
     const { id } = req.params;
     let confUser = await this._configuracionService.get( id );
-
-    if(!confUser) 
+    if(confUser.id === 0) 
       return res.status(409).json({message : "Usuario no encontrado"});
     
     confUser = await this._mapper(ConfiguracionDto, confUser);
@@ -54,6 +51,14 @@ class ConfiguracionController {
     }catch(error){
       res.status(500).json({status : "409", codeError : "CONF090", description: "Se ha generado un error interno"})
     }
+  }
+
+  async createConfUser(req, res){
+    const idUser = req.body.id;
+    const entity = {idUser};
+    let confUser = await this._mapper(ConfiguracionDto, entity);
+    confUser = await this._configuracionService.create(confUser);
+    res.json({data : confUser});
   }
 } 
 

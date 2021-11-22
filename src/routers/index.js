@@ -4,7 +4,7 @@ const cors = require("cors");
 const compression = require("compression");
 const app = express();
 
-module.exports = function({ HistoryRoutes, ComponentRoutes, UserRoutes, ConfiguracionRoutes, AreaRoutes, TipoComponenteRoutes, Auth, AuthAPIRoutes}){
+module.exports = function({ HistoryRoutes, ComponentRoutes, UserRoutes, ConfiguracionRoutes, CodeUserRoutes, AreaRoutes, TipoComponenteRoutes, Auth, AuthAPIRoutes, AccesoRoutes}){
     const router = Router();
     const apiRoute = Router();
 
@@ -19,7 +19,9 @@ module.exports = function({ HistoryRoutes, ComponentRoutes, UserRoutes, Configur
     apiRoute.use("/configuracion", Auth.verifyToken, ConfiguracionRoutes);
     apiRoute.use("/area", Auth.verifyToken, AreaRoutes);
     apiRoute.use("/tipoComponente", Auth.verifyToken, TipoComponenteRoutes);
+    apiRoute.use("/acceso", AuthAPIRoutes, AccesoRoutes);
     apiRoute.use("/auth", AuthAPIRoutes);
+    apiRoute.use("/code", CodeUserRoutes);
     router.use("/api", apiRoute);
 
     return router;

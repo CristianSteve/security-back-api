@@ -6,4 +6,5 @@ module.exports = {
     AreaDto : require("./area.dto"),
     TipoComponenteDto : require("./tipocomponente.dto"),
     CodeUserDto : require("./codeuser.dto"),
+    AccesoDto : require("./acceso.dto"),
 }

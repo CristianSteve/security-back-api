@@ -1,6 +1,6 @@
 class History{
   id = 0;
-  Componente_idComponente = 0;
+  idAcceso = 0;
   usuario = "";
   descripcion = "";
   createdAt = "";

@@ -2,10 +2,11 @@ const mapper = require("automapper-js");
 const { HistoryDto } = require("../dtos");
 
 class HistoryController {
-  constructor({ HistoryService, Email }) {
+  constructor({ HistoryService, Email, socketIo }) {
     this._historyService = HistoryService;
     this._mapper = mapper;
     this._email = Email;
+    this._socket = socketIo;
   }
 
   async getDate(req, res){
@@ -29,7 +30,9 @@ class HistoryController {
     newHistory = await this._mapper(HistoryDto, newHistory);
     //Debera enviar correo a todos los usuarios del sistema
     const conf = {email : res.user.email, nombre : res.user.nombre, area: "Area privada", subject : "Alerta", type : "alert"}
-    await this._email.sendEmail(conf);
+    //await this._email.sendEmail(conf);
+
+    this._socket.emit();
     return res.json({message : newHistory})
   }
 /* 

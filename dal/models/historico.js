@@ -5,8 +5,8 @@ module.exports = (sequelize, DataTypes) => {
   class Historico extends Model {
     static associate(models) {
        Historico.belongsTo(models.Componente,{
-        foreignKey: "Componente_idComponente",
-        as : "Componente"
+        foreignKey: "idAcceso",
+        as : "Acceso"
       }) 
     }
   };

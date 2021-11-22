@@ -9,9 +9,9 @@ class UserService extends BaseService {
     return await this._entityBusiness.getToken(username, password);
   }
 
-  async getCode(email){
+/*   async getCode(email){
     return await this._entityBusiness.getCode(email);
-  }
+  } */
 }
 
 module.exports = UserService;

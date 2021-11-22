@@ -6,4 +6,5 @@ module.exports = {
     AreaRepository : require("./area.repository"),
     TipoComponenteRepository : require("./tipocomponente.repository"),
     CodeUserRepository : require("./codeUser.repository"),
+    AccesoRepository : require("./acceso.repository"),
 }

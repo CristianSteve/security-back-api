@@ -6,4 +6,6 @@ module.exports = {
     AreaController : require("./area.controller"),
     TipoComponenteController : require("./tipocomponente.controller"),
     AuthController : require("./auth.controller"),
+    AccesoController : require("./acceso.controller"),
+    CodeUserController : require("./codeUser.controller"),
 }

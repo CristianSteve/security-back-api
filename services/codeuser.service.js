@@ -6,6 +6,13 @@ class CodeUserService extends BaseService {
     this._entityCodeUser = CodeUserBusiness;
   }
 
+  async getCode(email){
+    return await this._entityBusiness.getCode(email);
+  }
+
+  async validateCode(code){
+    return await this._entityBusiness.validateCode(code);
+  }
 }
 
 module.exports = CodeUserService;

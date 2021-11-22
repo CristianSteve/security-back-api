@@ -5,18 +5,10 @@ module.exports = (sequelize, DataTypes) => {
   class Componente extends Model {
     static associate(models) {
         Componente.belongsTo(models.Tipo_Componente, { as: "tipo_componente", foreignKey: "Tipo_idComponente"});
-        Componente.hasMany(models.Historico,{
-            foreignKey: "Componente_idComponente",
-            as : "Historico"
-          }) 
-       Componente.hasMany(models.Area,{
-        foreignKey: "Componente_idComponente",
-        as : "Area"
-      }) 
+        Componente.belongsTo(models.Acceso, { as: "Acceso", foreignKey: "idAcceso"});
     }
   };
   Componente.init({
-    //icon : DataTypes.STRING(20),
     nombre: {
       type: DataTypes.STRING(45),
       allowNull: false,

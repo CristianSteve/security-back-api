@@ -9,6 +9,7 @@ class User{
     emogi = "";
     status = false;
     Area_idArea = 0;
+    idProfile = "";
   }
   
   module.exports = User;

@@ -7,4 +7,5 @@ module.exports = {
     TipoComponente : require("./tipoComponente"),
     Area : require("./area"),
     CodeUser :  require("./codeUser"),
+    Acceso :  require("./acceso"),
 }

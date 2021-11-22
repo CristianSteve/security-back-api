@@ -5,5 +5,7 @@ module.exports = {
     ConfiguracionBusiness: require("./configuracion.business"),
     AreaBusiness: require("./area.business"),
     TipoComponenteBusiness: require("./tipocomponente.business"),
+    AccesoBusiness: require("./acceso.business"),
+    CodeUserBusiness: require("./codeuser.business"),
   };
   

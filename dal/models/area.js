@@ -4,13 +4,17 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Area extends Model {
     static associate(models) {
-       Area.belongsTo(models.Componente, { as: "componente", foreignKey: "Componente_idComponente"});
-       Area.hasMany(models.User,{
+       //Area.belongsTo(models.Acceso, { as: "acceso", foreignKey: "idAcceso"});
+      Area.hasMany(models.User,{
         foreignKey: "Area_idArea",
         as : "User"
       }) 
+      Area.hasMany(models.Acceso,{
+        foreignKey: "Acceso_idArea",
+        as : "Area"
+      }) 
     }
-  };
+  }; 
   Area.init({
     nombre: {
       type: DataTypes.STRING(50),

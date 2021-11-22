@@ -5,7 +5,7 @@ class History{
     status = false;
     createdAt = "";
     updatedAt = "";
-    Componente_idComponente = 0;
+    idAcceso = 0;
 }
 
 module.exports = History;

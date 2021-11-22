@@ -8,7 +8,8 @@ class User{
   celular = "";
   emogi = "";
   status = false;
-  Area_idArea = 0;
+  Area_idArea = "";
+  idProfile = "";
   }
   
-  module.exports = User;
+  module.exports = User;  
