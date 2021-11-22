@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(60),
       allowNull: false,
     },
+    icon : {
+      type : DataTypes.STRING(20),
+      allowNull: true
+    },
     status: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

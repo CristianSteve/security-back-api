@@ -1,9 +1,9 @@
 class Component {
   id = 0;
-  Tipo_idComponente = "";
-  icon = "";
   nombre = "";
   descripcion = "";
+  io = 0;
+  Tipo_idComponente = "";
   createdAt = "";
   updatedAt = "";
   status = false;

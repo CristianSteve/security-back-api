@@ -25,7 +25,7 @@ class ComponentController {
       newComponent = await this._componentService.create(newComponent);
       return res.json({data : newComponent})
     }catch(e){
-      return res.json({error : "error", message : e.message})
+      return res.status(409).json({data : e.message})
     }
   }
 

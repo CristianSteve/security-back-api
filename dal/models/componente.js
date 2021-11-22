@@ -18,6 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(60),
       allowNull: false,
     },
+    io : {
+      type : DataTypes.INTEGER,
+      allowNull: false,
+      unique: "io_UNIQUE"
+    },
     status: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
