@@ -2,14 +2,26 @@ const mapper = require("automapper-js");
 const { AccesoDto } = require("../dtos");
 
 class AccesoController {
-  constructor({ AccesoService }) {
+  constructor({ AccesoService, ComponentService }) {
     this._accesoService = AccesoService;
+    this._componentService = ComponentService;
     this._mapper = mapper;
   }
 
   async getAll(req, res){
     let acceso = await this._accesoService.getAll();
-    return res.json({data : acceso})
+    acceso = await this._mapper(AccesoDto, acceso);
+    const access = await this.mapperComponent(acceso);
+    return res.json({data : access})
+  }
+
+  async mapperComponent(acceso) {
+    await Promise.all(
+      acceso.map(async (access) => {
+        access.items = await this._componentService.getItemAccess(access.id);
+      })
+    );
+    return acceso;
   }
 
   async modifyAcceso(req, res){

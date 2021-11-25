@@ -8,6 +8,10 @@ class ComponentService extends BaseService {
   async updateStatus(id, entity){
     return await this._entityBusiness.update(id, entity);
   }
+
+  async getItemAccess(idAccess){
+    return await this._entityBusiness.getItemAccess(idAccess);
+  }
 }
 
 module.exports = ComponentService;

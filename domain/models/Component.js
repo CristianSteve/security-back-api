@@ -1,9 +1,10 @@
 class Component{
     id = 0;
+    Tipo_idComponente = 0;
+    idAcceso = null;
     nombre = "";
     descripcion = "";
     io = 0;
-    Tipo_idComponente = "";
     createdAt = "";
     updatedAt = "";
     status = false;

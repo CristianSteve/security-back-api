@@ -14,9 +14,15 @@ class ComponentController {
   }
 
   async getAllComponents(req, res){
-    let components = await this._componentService.getAll();
+    const {acceso} = req.query;
+    let components = {}
+    if(!acceso)
+      components = await this._componentService.getAll();
+    else
+      components = await this._componentService.getItemAccess(acceso);
     return res.json({data : components})
   }
+
 
   async createComponent(req, res){
     const { body } = req;
@@ -35,6 +41,15 @@ class ComponentController {
     let upComponent = await this._mapper(ComponentDto, entity);
     upComponent = await this._componentService.update(id, upComponent);
     return res.json({data : "actualizado"})
+  }
+
+  async updateAccessComponent(req, res){
+    const { id } = req.params
+    const { idAcceso } = req.body;
+    let component = await this._componentService.get(id);
+    component = {...component, idAcceso};
+    const upComponent = await this._componentService.update(id, component);
+    return res.json({data : upComponent})
   }
 } 
 

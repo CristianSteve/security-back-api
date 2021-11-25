@@ -12,6 +12,11 @@ class ComponentBusiness extends BaseBusiness {
     let updatedEntity = await this._entityRepository.update(id, dataActually);
     return mapper(Component, updatedEntity);
   }
+
+  async getItemAccess(idAccess){
+    let components = await this._entityRepository.getItemAccess(idAccess);
+    return components.map(entity => mapper(Component, entity.toJSON()));
+  }
 }
 
 module.exports = ComponentBusiness;

@@ -14,10 +14,11 @@ class ComponentRepository extends BaseRepository {
     return this._db.Componente.update(entity, { where: { id } }); 
   }
 
-  getCategoria(Categoria_idCategoria_stock) {
-/*     return this._db["Component"].findAll({
-      where: { Categoria_idCategoria_stock },
-    }); */
+  getItemAccess(idAcceso){
+    if(idAcceso !== "null")
+      return this._db.Componente.findAll({where: { idAcceso }});
+    else  
+      return this._db.Componente.findAll({where: { idAcceso : {[Op.is] : null }}});
   }
 
   getProductStock(product) {

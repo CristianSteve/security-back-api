@@ -3,8 +3,9 @@ class Acceso{
     Acceso_idArea = 0;
     descripcion = "";
     status = false;
-    createdAt = ""
-    updatedAt = ""
+    createdAt = "";
+    updatedAt = "";
+    items = [];
 }
 
 module.exports = Acceso;
