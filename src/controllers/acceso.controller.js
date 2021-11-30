@@ -1,10 +1,11 @@
 const mapper = require("automapper-js");
-const { AccesoDto } = require("../dtos");
+const { AccesoDto, accesoArd } = require("../dtos");
 
 class AccesoController {
-  constructor({ AccesoService, ComponentService }) {
+  constructor({ AccesoService, ComponentService, TipoComponenteService }) {
     this._accesoService = AccesoService;
     this._componentService = ComponentService;
+    this._tipoComponentService = TipoComponenteService;
     this._mapper = mapper;
   }
 
@@ -31,6 +32,34 @@ class AccesoController {
     console.table(upAcceso);
     upAcceso = await this._accesoService.update(id, upAcceso);
     return res.json({data : upAcceso})
+  }
+
+  async getAccessitems(req, res){
+    const { isArduino } = req.query;
+    let acceso = await this._accesoService.getAll();
+    let type =  await this._tipoComponentService.getAll();
+
+    acceso = await this._mapper(AccesoDto, acceso);
+    let data = await this.mapperTypeComponent(acceso, type);
+    if(isArduino){
+      data = data.map(a => {let ix = {}; a.items.forEach((i) => {ix[i.Tipo_idComponente.descArduino] = i.io}); return this._mapper(accesoArd, ix)});
+      data.push({"sv" : "0"})
+    }
+    return res.json({data})
+  }
+
+  async mapperTypeComponent(acceso, type) {
+    await Promise.all(
+      acceso.map(async (access) => {
+        access.items = await this._componentService.getItemAccess(access.id);
+        access.items.map((i) => (i.Tipo_idComponente = type.find((t) => i.Tipo_idComponente  === t.id)))
+      })
+    );
+    return acceso;
+  }
+
+  async getAction(req, res){
+    res.send("{\"component\":3,\"bomRed\":4,\"bomGreen\":5,\"action\":0,\"range\":60}")
   }
 } 
 

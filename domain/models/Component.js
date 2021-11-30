@@ -1,6 +1,5 @@
 class Component{
     id = 0;
-    Tipo_idComponente = 0;
     idAcceso = null;
     nombre = "";
     descripcion = "";
@@ -8,6 +7,7 @@ class Component{
     createdAt = "";
     updatedAt = "";
     status = false;
+    Tipo_idComponente = 0;
 }
 
 module.exports = Component;

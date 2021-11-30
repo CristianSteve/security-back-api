@@ -19,7 +19,7 @@ module.exports = function({ HistoryRoutes, ComponentRoutes, UserRoutes, Configur
     apiRoute.use("/configuracion", Auth.verifyToken, ConfiguracionRoutes);
     apiRoute.use("/area", Auth.verifyToken, AreaRoutes);
     apiRoute.use("/tipoComponente", Auth.verifyToken, TipoComponenteRoutes);
-    apiRoute.use("/acceso", AuthAPIRoutes, AccesoRoutes);
+    apiRoute.use("/acceso", Auth.verifyToken, AccesoRoutes);
     apiRoute.use("/auth", AuthAPIRoutes);
     apiRoute.use("/code", CodeUserRoutes);
     router.use("/api", apiRoute);

@@ -7,6 +7,10 @@ class AccesoBusiness extends BaseBusiness {
     super(AccesoRepository, Acceso);
     this._entityRepository = AccesoRepository;
   }
+
+  async getAccessitems(){
+    return await this._entityRepository.getAccessitems();
+  }
 }
 
 module.exports = AccesoBusiness;

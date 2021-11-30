@@ -16,6 +16,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: "nombre_UNIQUE"
     },
+    icon : {
+      type : DataTypes.STRING(20),
+      allowNull: true
+    },
+    descArduino : { 
+      type : DataTypes.STRING(5),
+      allowNull: false,
+      unique: "descArduino_UNIQUE"
+    },
     status: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

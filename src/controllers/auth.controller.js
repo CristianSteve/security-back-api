@@ -13,7 +13,8 @@ class AuthController {
       return res.status(data.status).json({data})
     }else{
       if(only)
-        return res.json({token : data.token})
+        return res.send(data.token);
+        //return res.json({token : data.token})
       else
         return res.json({data})
     }

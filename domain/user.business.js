@@ -12,6 +12,7 @@ class UserBusiness extends BaseBusiness {
   }
 
   async getToken(username, password) {
+    console.log("entro", username, password)
     const entities = await this._entityRepository.authUser(username, password);
     if (!entities) return {status: "409", codeError : "ATH001", description : "Credenciales no validos"};
     const data = mapper(UserAuth, entities.toJSON());

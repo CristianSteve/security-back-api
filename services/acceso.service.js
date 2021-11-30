@@ -5,6 +5,9 @@ class AccesoService extends BaseService {
     this._entityBusiness = AccesoBusiness;
   }
 
+  async getAccessitems(){
+    return await this._entityBusiness.getAccessitems();
+  }  
 }
 
 module.exports = AccesoService;
