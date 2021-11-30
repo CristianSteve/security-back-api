@@ -59,7 +59,12 @@ class AccesoController {
   }
 
   async getAction(req, res){
-    res.send("{\"component\":3,\"bomRed\":4,\"bomGreen\":5,\"action\":0,\"range\":60}")
+    const { id } = req.params;
+    const { action } = await this._accesoService.get(id);                          //obtiene la accion del acceso
+    const components = await this._accesoService.getAccessComponent(id);           //obtiene los componentes asociados al acceso
+    const [{ Componente }] = components.filter((c) => c.descArduino === "sv");     //obtiene array y su estructura del componente servo
+    const [ {io} ] = Componente;                                                   //obtiene entrada del servomotor
+    res.json({component : io, action : Number(action), range : action? 60 : 120}); // {"component":3,"action":1,"range":60}
   }
 } 
 

@@ -11,6 +11,10 @@ class AccesoBusiness extends BaseBusiness {
   async getAccessitems(){
     return await this._entityRepository.getAccessitems();
   }
+
+  async getAccessComponent(id){
+    return await this._entityRepository.getAccessComponent(id);
+  }
 }
 
 module.exports = AccesoBusiness;

@@ -23,6 +23,20 @@ class AccesoRepository extends BaseRepository {
       ],
     });
   } 
+
+  getAccessComponent(idAcceso){
+    return this._db.Tipo_Componente.findAll({
+      include: [
+        {
+          model: this._db.Componente,
+          as: "Componente",
+          where : {idAcceso},
+          require: true,
+          right: true,
+        }
+      ],
+    });
+  }
 }
 
 module.exports = AccesoRepository;

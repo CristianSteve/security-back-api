@@ -32,7 +32,7 @@ class HistoryController {
     const conf = {email : res.user.email, nombre : res.user.nombre, area: "Area privada", subject : "Alerta", type : "alert"}
     //await this._email.sendEmail(conf);
 
-    this._socket.emit();
+    //this._socket.emit();
     return res.json({message : newHistory})
   }
 /* 

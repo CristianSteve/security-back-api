@@ -7,6 +7,10 @@ class AccesoService extends BaseService {
 
   async getAccessitems(){
     return await this._entityBusiness.getAccessitems();
+  } 
+  
+  async getAccessComponent(id){
+    return await this._entityBusiness.getAccessComponent(id);
   }  
 }
 
