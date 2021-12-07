@@ -48,6 +48,12 @@ class AccesoController {
     return res.json({data})
   }
 
+  /**
+   * 
+   * @param {Array} acceso 
+   * @param {Array} type 
+   * @returns Array de componentes segun su acceso asociado
+   */
   async mapperTypeComponent(acceso, type) {
     await Promise.all(
       acceso.map(async (access) => {
@@ -58,6 +64,7 @@ class AccesoController {
     return acceso;
   }
 
+  //TODO: para dar instrucción al arduino
   async getAction(req, res){
     const { id } = req.params;
     const { action } = await this._accesoService.get(id);                          //obtiene la accion del acceso

@@ -1,5 +1,5 @@
 const mapper = require("automapper-js");
-const { UserDto } = require("../dtos");
+const { UserDto, UserId } = require("../dtos");
 
 class UserController {
   constructor({ UserService, Email }) {
@@ -11,6 +11,21 @@ class UserController {
   async getAll(req, res){
     let user = await this._userService.getAll();
     user = await this._mapper(UserDto, user);
+    return res.json({data : user})
+  }
+
+  async getUser(req, res){
+    const { id } = req.params;
+    let user = await this._userService.get(id);
+    user = mapper(UserId, user);
+    return res.json({data : user})
+  }
+
+  async updateUser(req, res){
+    const { id } = req.params;
+    const body = req.body;
+    let user = await this._userService.update(id, body);
+    user = mapper(UserId, user);
     return res.json({data : user})
   }
 

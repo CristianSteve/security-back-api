@@ -40,7 +40,7 @@ class ComponentController {
     const { id } = req.params
     let upComponent = await this._mapper(ComponentDto, entity);
     upComponent = await this._componentService.update(id, upComponent);
-    return res.json({data : "actualizado"})
+    return res.json({data : upComponent})
   }
 
   async updateAccessComponent(req, res){
