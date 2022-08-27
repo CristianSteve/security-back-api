@@ -10,8 +10,8 @@ class AccesoController {
   }
 
   async getAll(req, res){
-    let acceso = await this._accesoService.getAll();
-    acceso = await this._mapper(AccesoDto, acceso);
+    const acceso = await this._accesoService.getAll().then((e) => (this.mapperComponent(e)))
+    //acceso = await this._mapper(AccesoDto, acceso);
     const access = await this.mapperComponent(acceso);
     return res.json({data : access})
   }

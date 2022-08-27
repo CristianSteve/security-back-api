@@ -30,7 +30,7 @@ const { HistoryService, ComponentService, UserService, ConfiguracionService, Cod
 const { HistoryBusiness, ComponentBusiness, UserBusiness, ConfiguracionBusiness, CodeUserBusiness, AreaBusiness, TipoComponenteBusiness, AccesoBusiness } = require("../domain/")
 
 //repositories
-const { HistoryRepository, ComponentRepository, UserRepository, ConfiguracionRepository, CodeUserRepository, AreaRepository, TipoComponenteRepository, AccesoRepository } = require("../dal/repositories");
+const { HistoryRepository, ComponentRepository, UserRepository, ConfiguracionRepository, CodeUserRepository, AreaRepository, TipoComponenteRepository, AccesoRepository, PerfilRepository } = require("../dal/repositories");
 
 //db
 const db = require("../dal/models");
@@ -93,6 +93,7 @@ container.
         CodeUserRepository: asClass(CodeUserRepository).singleton(),
         AccesoRepository: asClass(AccesoRepository).singleton(),
         CodeUserRepository: asClass(CodeUserRepository).singleton(),
+        PerfilRepository : asClass(PerfilRepository).singleton(),
       })
       .register({
         HistoryBusiness: asClass(HistoryBusiness).singleton(),

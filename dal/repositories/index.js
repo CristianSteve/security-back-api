@@ -7,4 +7,5 @@ module.exports = {
     TipoComponenteRepository : require("./tipocomponente.repository"),
     CodeUserRepository : require("./codeUser.repository"),
     AccesoRepository : require("./acceso.repository"),
+    PerfilRepository : require("./perfil.repository"),
 }

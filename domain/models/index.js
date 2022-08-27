@@ -8,4 +8,5 @@ module.exports = {
     Area : require("./area"),
     CodeUser :  require("./codeUser"),
     Acceso :  require("./acceso"),
+    Perfil : require("./perfil")
 }
